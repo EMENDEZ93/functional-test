@@ -25,5 +25,17 @@ Feature: prueba de ingreso vehiculos al parqueadero
     Then entonces podra ver un mensaje "<mensaje>" parqueado con exito
 
     Examples: 
-      | placa   | mensaje                                 |
+      | placa   | mensaje                                  |
       | 777-ccc | Carro con placa 777-ccc Parqueado Exito! |
+
+  Scenario Outline: ingresar vehiculo tipo moto sin cilindraje
+    Given el vigilante esta en la pagina inicio del parqueadero
+    When el vigilante se dirija al tab ingresar vehiculo
+    And este se dirija tab moto
+    And digite la placa "<placa>"
+    And el vigilante presione en el boton ingresar
+    Then entonces el vigilante podra ver un mensaje de error "<mensaje>"
+
+    Examples: 
+      | placa   | mensaje                                     |
+      | 333-ccc | Error! EL CILINDRAJE ES UN CAMPO REQUERIDO. |

@@ -114,4 +114,43 @@ public class IngresarVehiculoParqueadero {
 		assertEquals(message, result);
 	}
 
+	
+	//ingresar vehiculo tipo moto sin cilindraje
+	
+	@Given("el vigilante esta en la pagina inicio del parqueadero")
+	public void el_vigilante_esta_en_la_pagina_inicio_del_parqueadero() {
+		controller.manage().window().maximize();
+		controller.get("http://localhost:4200/");
+	}
+	
+	@When("el vigilante se dirija al tab ingresar vehiculo")
+	public void el_vigilante_se_dirija_al_tab_ingresar_vehiculo() throws InterruptedException {
+		controller.findElement(By.id("mat-tab-label-0-1")).click();
+		Thread.sleep(1000);
+	}
+	
+	@When("este se dirija tab moto")
+	public void este_se_dirija_tab_moto() throws InterruptedException {
+		controller.findElement(By.id("mat-tab-label-1-0")).click();
+		Thread.sleep(1000);
+	}
+
+	@When("^digite la placa \"(.*)\"$")
+	public void digite_la_placa(String placa) throws InterruptedException {
+		controller.findElement(By.name("placa-moto")).sendKeys(placa);
+		Thread.sleep(1000);
+	}
+	
+	@When("el vigilante presione en el boton ingresar")
+	public void el_vigilante_presione_en_el_boton_ingresar() throws InterruptedException {
+		controller.findElement(By.id("ingresar-vehiculo-moto-submit")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("^entonces el vigilante podra ver un mensaje de error \"(.*)\"$")
+	public void entonces_el_vigilante_podra_ver_un_mensaje_de_error(String message) {
+		String result = controller.findElement(By.name("ingreso-vehiculo-moto-error-alert")).getText();
+
+		assertEquals(message, result);
+	}
 }
