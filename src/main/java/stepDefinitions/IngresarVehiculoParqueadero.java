@@ -11,15 +11,20 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import page.IngresoVehiculoTabPage;
 
 public class IngresarVehiculoParqueadero {
 
 	WebDriver controller;
 
+	IngresoVehiculoTabPage ingresoVehiculoTabPage;
+	
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		controller = new ChromeDriver();
+		
+		ingresoVehiculoTabPage = new IngresoVehiculoTabPage(controller);
 	}
 
 	@After
@@ -37,32 +42,27 @@ public class IngresarVehiculoParqueadero {
 
 	@When("el vigilante de click en el tab ingresar vehiculo")
 	public void el_vigilante_de_click_en_el_tab_ingresar_vehiculo() throws InterruptedException {
-		controller.findElement(By.id("mat-tab-label-0-1")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickIngresoVehiculoTab();
 	}
 
 	@When("este en el tab moto")
 	public void este_en_el_tab_moto() throws InterruptedException {
-		controller.findElement(By.id("mat-tab-label-1-0")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickMotoTab();
 	}
 
 	@When("^e ingrese la placa \"(.*)\"$")
 	public void e_ingrese_la_placa(String placa) throws InterruptedException {
-		controller.findElement(By.name("placa-moto")).sendKeys(placa);
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.setPlacMotoaField(placa);
 	}
 
 	@When("^e ingrese el cilindraje \"(.*)\"$")
 	public void e_ingrese_el_cilindraje(String cilindraje) throws InterruptedException {
-		controller.findElement(By.name("cilindraje")).sendKeys(cilindraje);
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.setCilingrajeField(cilindraje);
 	}
 
 	@When("el vigilante de click en el boton ingresar")
 	public void el_vigilante_de_click_en_el_boton_ingresar() throws InterruptedException {
-		controller.findElement(By.id("ingresar-vehiculo-moto-submit")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickIngresarMotoButton();
 	}
 
 	@Then("entonces el vigilante podra ver un mensaje \"(.*)\" parqueado con exito$")
@@ -84,26 +84,22 @@ public class IngresarVehiculoParqueadero {
 
 	@When("el vigilante se ubica en el tab ingresar vehiculo")
 	public void el_vigilante_se_ubica_en_el_tab_ingresar_vehiculo() throws InterruptedException {
-		controller.findElement(By.id("mat-tab-label-0-1")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickIngresoVehiculoTab();
 	}
 
 	@When("este en el tab carro")
 	public void este_en_el_tab_carro() throws InterruptedException {
-		controller.findElement(By.id("mat-tab-label-1-1")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickCarroTab();
 	}
 
 	@When("^e introduce la placa \"(.*)\"$")
 	public void e_introduce_la_placa(String placa) throws InterruptedException {
-		controller.findElement(By.name("placa-carro")).sendKeys(placa);
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.setPlacaCarroField(placa);
 	}
 
 	@When("de click en el boton ingresar")
 	public void de_click_en_el_boton_ingresar() throws InterruptedException {
-		controller.findElement(By.id("ingresar-vehiculo-carro-submit")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickIngresarCarroButton();
 	}
 
 	@Then("^entonces podra ver un mensaje \"(.*)\" parqueado con exito$")
@@ -119,32 +115,27 @@ public class IngresarVehiculoParqueadero {
 	
 	@Given("el vigilante esta en la pagina inicio del parqueadero")
 	public void el_vigilante_esta_en_la_pagina_inicio_del_parqueadero() {
-		controller.manage().window().maximize();
 		controller.get("http://localhost:4200/");
 	}
 	
 	@When("el vigilante se dirija al tab ingresar vehiculo")
 	public void el_vigilante_se_dirija_al_tab_ingresar_vehiculo() throws InterruptedException {
-		controller.findElement(By.id("mat-tab-label-0-1")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickIngresoVehiculoTab();
 	}
 	
 	@When("este se dirija tab moto")
 	public void este_se_dirija_tab_moto() throws InterruptedException {
-		controller.findElement(By.id("mat-tab-label-1-0")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickMotoTab();
 	}
 
 	@When("^digite la placa \"(.*)\"$")
 	public void digite_la_placa(String placa) throws InterruptedException {
-		controller.findElement(By.name("placa-moto")).sendKeys(placa);
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.setPlacMotoaField(placa);
 	}
 	
 	@When("el vigilante presione en el boton ingresar")
 	public void el_vigilante_presione_en_el_boton_ingresar() throws InterruptedException {
-		controller.findElement(By.id("ingresar-vehiculo-moto-submit")).click();
-		Thread.sleep(1000);
+		ingresoVehiculoTabPage.clickIngresarMotoButton();
 	}
 	
 	@Then("^entonces el vigilante podra ver un mensaje de error \"(.*)\"$")
