@@ -11,5 +11,5 @@ Feature: prueba de salida vehiculos al parqueadero
     Then entonces el vigilante podra ver un mensaje "<mensaje>" salida con exito
 
     Examples: 
-      | mensaje                                                    |
-      | Moto con placa 888-ccc a salido del parqueadero con Exito! |
+      | mensaje                                                                                                |
+      | Moto con placa 888-ccc a salido del parqueadero con Exito! \| Tiempo Horas : 1 \| Valor a pagar : 2500 |

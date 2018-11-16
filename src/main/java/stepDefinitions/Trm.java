@@ -27,25 +27,17 @@ public class Trm {
 		controller.close();
 	}
 
-	@Given("el vigilante se encuentra la aprincipal del parqueadero")
-	public void el_vigilante_se_encuentra_la_aprincipal_del_parqueadero() {
+	@Given("el vigilante se ubica la pagina principal del parqueadero")
+	public void el_vigilante_se_ubica_la_pagina_principal_del_parqueadero() {
 		controller.manage().window().maximize();
 		controller.get("http://localhost:4200/");
 	}
 
-	@When("el vigilante de click en el tab TRM")
-	public void el_vigilante_de_click_en_el_tab_TRM() throws InterruptedException {
-		controller.findElement(By.id("mat-tab-label-0-2")).click();
-		Thread.sleep(1000);
-	}
-
-	@Then("entonces el vigilante podra ver trm del dia actual")
-	public void entonces_el_vigilante_podra_ver_trm_del_dia_actual() {
-
+	@Then("entonces el vigilante podra ver trm del dia actual en la parte superior de la pagina")
+	public void entonces_el_vigilante_podra_ver_trm_del_dia_actual_en_la_parte_superior_de_la_pagina() {
 		String result = controller.findElement(By.name("trm-value")).getText();
 
-		assertTrue(result.length() > 4 );
-
+		assertTrue(result.length() > 10);
 	}
 
 }

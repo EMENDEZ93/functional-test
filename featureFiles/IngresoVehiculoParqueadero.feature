@@ -38,4 +38,4 @@ Feature: prueba de ingreso vehiculos al parqueadero
 
     Examples: 
       | placa   | mensaje                                     |
-      | 333-ccc | Error! EL CILINDRAJE ES UN CAMPO REQUERIDO. |
+      | 333-ccc | EL CILINDRAJE ES UN CAMPO REQUERIDO. |

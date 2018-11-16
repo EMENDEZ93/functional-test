@@ -4,10 +4,9 @@ Feature: prueba de visualizacion del trm
   Para poder ver el trm del dia de hoy
 
   Scenario Outline: visualizacion del trm
-    Given el vigilante se encuentra la aprincipal del parqueadero
-    When el vigilante de click en el tab TRM
-    Then entonces el vigilante podra ver trm del dia actual
+    Given el vigilante se ubica la pagina principal del parqueadero
+    Then entonces el vigilante podra ver trm del dia actual en la parte superior de la pagina
 
     Examples: 
-      | placa   | cilindraje | mensaje                                 |
-      | 888-ccc |       3000 | Moto con placa 888-ccc Parqueado Exito! |
+      | mensaje |
+      |         |
